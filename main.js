@@ -41,16 +41,19 @@ window.addEventListener('load', () => {
                 const tempProduct = document.createElement('div');
                 tempProduct.className = 'product';
     
+                const tumb = document.createElement('div');
+                tumb.className = 'product-tumb';
                 const img = document.createElement('img');
                 img.src = product.image;
-                tempProduct.appendChild(img);
-    
-                const info = document.createElement('div');
-                info.classList = 'info';
+                tumb.appendChild(img);
+                tempProduct.appendChild(tumb);
 
+                const info = document.createElement('div');
+                info.classList = 'product-details';
+
+                createElement(info, 'h3', product.category);
                 createElement(info, 'h4', product.title);
                 createElement(info, 'p', product.description);
-                createElement(info, 'h6', product.price);
     
                 tempProduct.appendChild(info);
                 productsParent.appendChild(tempProduct);
