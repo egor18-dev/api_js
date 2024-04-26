@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
     const retrieveData =  async function(addInfo = '') {
         const response = await fetch(`${principalUrl}/${addInfo}`);
         const data = await response.json();
+        console.log(data);
         return data;
     }
 
@@ -38,15 +39,20 @@ window.addEventListener('load', () => {
     
             products.forEach((product) => {
                 const tempProduct = document.createElement('div');
+                tempProduct.className = 'product';
     
                 const img = document.createElement('img');
                 img.src = product.image;
                 tempProduct.appendChild(img);
     
-                createElement(tempProduct, 'h4', product.title);
-                createElement(tempProduct, 'p', product.description);
-                createElement(tempProduct, 'span', product.price);
+                const info = document.createElement('div');
+                info.classList = 'info';
+
+                createElement(info, 'h4', product.title);
+                createElement(info, 'p', product.description);
+                createElement(info, 'h6', product.price);
     
+                tempProduct.appendChild(info);
                 productsParent.appendChild(tempProduct);
             });
     
