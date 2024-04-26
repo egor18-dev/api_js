@@ -50,12 +50,17 @@ body{
     cursor: pointer;
 }
 
+.products{
+    display: flex !important;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+
 .products .product {
     width: 380px;
     position: relative;
     box-shadow: 0 2px 7px #dfdfdf;
     margin: 50px auto;
-    background: #fafafa;
 }
 
 .badge {
