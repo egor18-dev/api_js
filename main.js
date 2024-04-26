@@ -24,6 +24,7 @@ window.addEventListener('load', () => {
 
         categories.forEach((category) => {
             createElement(nav, 'a', category);
+            
         });
 
     });
