@@ -4,6 +4,17 @@ window.addEventListener('load', () => {
     let actualCategory = 'electronics';
     const nav = document.querySelector('nav');
 
+    const button = document.querySelector('button');
+    let limited = false;
+
+    button.addEventListener('click', () => {
+        limited =! limited;
+        
+        console.log(limited);
+
+        button.innerHTML = limited ? 'Deslimitar' : 'Limitar';
+    });
+
     const retrieveData =  async function(addInfo = '') {
         const response = await fetch(`${principalUrl}/${addInfo}`);
         const data = await response.json();
@@ -22,6 +33,7 @@ window.addEventListener('load', () => {
     }
 
     retrieveData('products/categories').then((categories) => {
+        createElement(nav, 'a', 'Products');
         categories.forEach((category, index) => {
             createElement(nav, 'a', category);
         
@@ -68,7 +80,11 @@ window.addEventListener('load', () => {
         const text = elem.target.textContent || '';
 
         if(text.length > 0){
-            retrieveProducts(`products/category/${text}`);
+            if(text.toLowerCase() !== 'products'){
+                retrieveProducts(limited ? `products/category/${text}?limit=5` : `products/category/${text}`);
+            }else{
+                retrieveProducts(limited ? 'products?limit=5' : 'products');
+            }
         }
     });
 

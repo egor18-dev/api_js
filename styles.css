@@ -162,3 +162,13 @@ body{
 .product-links a:hover {
     color: #fbb72c;
 }
+
+button{
+    margin: 20px;
+    padding: 10px 30px;
+    background-color: #18191A;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
